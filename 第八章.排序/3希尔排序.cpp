@@ -4,7 +4,21 @@ using namespace std;
 //希尔排序 
 
 void ShellSort(int arr[], int length){
-		
+	int step = length/2;
+	while(step){
+		for (int i=0;i<step;i++){
+			for (int j=i+step;j<length;j++){
+				int temp = arr[j];  //要使得间隔step的几个数有序 ,直接插入排序思想 
+				int k=j-step;
+				while(k>=0&&temp<arr[k]){
+					arr[k+step] = arr[k];
+					k-=step;
+				} 
+				arr[k+step] = temp;
+			}
+		}
+		step/=2;
+	} 
 } 
 
 // 下面是测试专用数据 
